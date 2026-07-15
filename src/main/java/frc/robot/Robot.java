@@ -4,9 +4,13 @@
 
 package frc.robot;
 
+//import edu.wpi.first.wpilibj.DigitalInput;
+// import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.xrp.XRPServo;
+//import edu.wpi.first.wpilibj.examples.XRPReference.devices.XRPServo;
 
 /**
  * The methods in this class are called automatically corresponding to each mode, as described in
@@ -14,6 +18,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  * this project, you must also update the Main.java file in the project.
  */
 public class Robot extends TimedRobot {
+  // private XRPServo armServo = new XRPServo(4);
+  // private final DigitalInput m_button = new DigitalInput(0);
+  //private final DigitalOutput m_led = new DigitalOutput(1);
   private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
@@ -54,6 +61,7 @@ public class Robot extends TimedRobot {
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
   public void autonomousInit() {
+    //armServo.setAngle(0);
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
 
     // schedule the autonomous command (example)
@@ -68,6 +76,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    //armServo.setAngle(180);
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -79,7 +88,14 @@ public class Robot extends TimedRobot {
 
   /** This function is called periodically during operator control. */
   @Override
-  public void teleopPeriodic() {}
+  public void teleopPeriodic() {
+    // {if (m_button.get()){
+    //   armServo.setAngle(45);
+    // }else{
+    //   armServo.setAngle(180);
+    // }
+    // }
+  }
 
   @Override
   public void testInit() {
