@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
+import frc.robot.commands.ServoWithGyro;
 import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.xrp.XRPOnBoardIO;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
+//import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -59,8 +60,9 @@ public class RobotContainer {
     // Example of how to use the onboard IO
     Trigger userButton = new Trigger(m_onboardIO::getUserButtonPressed);
     userButton
-        .onTrue(new PrintCommand("USER Button Pressed"))
-        .onFalse(new PrintCommand("USER Button Released"));
+          .onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
+        // .onTrue(new PrintCommand("USER Button Pressed"))
+        // .onFalse(new PrintCommand("USER Button Released"));
 
     JoystickButton joystickAButton = new JoystickButton(m_controller, 1);
     joystickAButton
