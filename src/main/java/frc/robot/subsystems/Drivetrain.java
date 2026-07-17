@@ -39,6 +39,9 @@ public class Drivetrain extends SubsystemBase {
   // Set up the BuiltInAccelerometer
   private final BuiltInAccelerometer m_accelerometer = new BuiltInAccelerometer();
 
+  // whether or not the right motor is inverted, controls whether the robot will turn or drive straight
+  private boolean rightInversion = true;
+
   /** Creates a new Drivetrain. */
   public Drivetrain() {
     SendableRegistry.addChild(m_diffDrive, m_leftMotor);
@@ -47,12 +50,17 @@ public class Drivetrain extends SubsystemBase {
     // We need to invert one side of the drivetrain so that positive voltages
     // result in both sides moving forward. Depending on how your robot's
     // gearbox is constructed, you might have to invert the left side instead.
-    m_rightMotor.setInverted(true);
+    m_rightMotor.setInverted(rightInversion);
 
     // Use inches as unit for encoder distances
     m_leftEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
     m_rightEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
     resetEncoders();
+  }
+
+  public void flipRightInversion(){
+    rightInversion = !rightInversion;
+    m_rightMotor.setInverted(rightInversion);
   }
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
