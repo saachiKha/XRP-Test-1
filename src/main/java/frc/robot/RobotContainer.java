@@ -11,6 +11,7 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
 import frc.robot.commands.DefaultDrive;
+import frc.robot.commands.GyroPath;
 import frc.robot.commands.ServoWithGyro;
 import frc.robot.commands.TurnWithGyroAndTimeout;
 import frc.robot.subsystems.Arm; 
@@ -85,7 +86,7 @@ public class RobotContainer {
         .onTrue(new InstantCommand(() -> m_drivetrain.flipRightInversion(), m_drivetrain));
 
     // Setup SmartDashboard options
-    m_chooser.setDefaultOption("Auto Routine Distance", new AutonomousDistance(m_drivetrain));
+    m_chooser.setDefaultOption("Gyro Path", new GyroPath(m_drivetrain));
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
     SmartDashboard.putData(m_chooser);
   }

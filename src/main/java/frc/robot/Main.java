@@ -5,7 +5,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.RobotBase;
-import edu.wpi.first.wpilibj.Timer;
 
 /**
  * Do NOT add any static variables to this class, or any initialization at all. Unless you know what
@@ -14,7 +13,6 @@ import edu.wpi.first.wpilibj.Timer;
  */
 public final class Main {
   private Main() {
-    //Timer timer = new Timer();
   }
 
   /**
