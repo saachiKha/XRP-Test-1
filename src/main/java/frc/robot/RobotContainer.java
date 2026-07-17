@@ -10,8 +10,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
+import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.ServoWithGyro;
-import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Arm; 
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -34,6 +35,8 @@ public class RobotContainer {
   private final XRPOnBoardIO m_onboardIO = new XRPOnBoardIO();
   private final Arm m_arm = new Arm();
 
+  Joystick joystick = new Joystick(0);
+
   // Assumes a gamepad plugged into channel 0
   private final Joystick m_controller = new Joystick(0);
 
@@ -43,6 +46,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
+    m_drivetrain.setDefaultCommand(new DefaultDrive(m_drivetrain, joystick));
     configureButtonBindings();
   }
 
