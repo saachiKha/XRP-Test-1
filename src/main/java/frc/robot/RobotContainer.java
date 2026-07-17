@@ -12,6 +12,7 @@ import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
 import frc.robot.commands.DefaultDrive;
 import frc.robot.commands.ServoWithGyro;
+import frc.robot.commands.TurnWithGyroAndTimeout;
 import frc.robot.subsystems.Arm; 
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -64,7 +65,8 @@ public class RobotContainer {
     // Example of how to use the onboard IO
     Trigger userButton = new Trigger(m_onboardIO::getUserButtonPressed);
     userButton
-          .onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
+            .onTrue(new TurnWithGyroAndTimeout(3,90,10, m_drivetrain));
+         // .onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
         // .onTrue(new PrintCommand("USER Button Pressed"))
         // .onFalse(new PrintCommand("USER Button Released"));
 
