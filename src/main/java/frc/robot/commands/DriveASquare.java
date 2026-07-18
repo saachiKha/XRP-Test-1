@@ -11,21 +11,15 @@ import frc.robot.subsystems.Drivetrain;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class DriveASquare extends SequentialCommandGroup {
-  Drivetrain drivetrain;
   /** Creates a new DriveASquare. */
-  public DriveASquare() {//TODO:Not working, come back to this later
-    this.drivetrain = drivetrain;
+  public DriveASquare(Drivetrain drivetrain) {//TODO:Not working, come back to this later
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(//why not use a loop?
-      new DriveDistance(.5, 5, drivetrain),
-      new TurnDegrees(.5, 90, drivetrain),
-      new DriveDistance(.5, 5, drivetrain),
-      new TurnDegrees(.5, 90, drivetrain),
-      new DriveDistance(.5, 5, drivetrain),
-      new TurnDegrees(.5, 90, drivetrain),
-      new DriveDistance(.5, 5, drivetrain),
-      new TurnDegrees(.5, 90, drivetrain)
-    );
+    for (int i = 0; i < 4; i++){
+      addCommands(//why not use a loop? edit:that's taught later in the tutorial
+        new DriveDistance(.5, 5, drivetrain),
+        new TurnDegrees(.5, 90, drivetrain)
+      );
+    }
   }
 }
