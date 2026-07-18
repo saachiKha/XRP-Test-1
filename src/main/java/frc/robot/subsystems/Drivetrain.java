@@ -155,7 +155,8 @@ public class Drivetrain extends SubsystemBase {
 
   @Override
   public void periodic() {
-    SmartDashboard.putNumber("Test Num, Gyro Direction", m_gyro.getAngleZ());
+    SmartDashboard.putNumber("Gyro Direction", m_gyro.getAngleZ());
+    SmartDashboard.putNumber("What the gyro seems to depend on?", m_gyro.getRateZ());
     SmartDashboard.putBoolean("Test Bool", true);
     SmartDashboard.putString("Test Str", "Hello");
     // This method will be called once per scheduler run

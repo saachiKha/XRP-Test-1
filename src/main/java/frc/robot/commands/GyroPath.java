@@ -19,8 +19,8 @@ public class GyroPath extends SequentialCommandGroup {
     addCommands(//TODO: Does not work right now, just beeps, fix later
       new TurnWithGyro(45, .5, drivetrain),
       new WaitCommand(1),
-      new DriveDistance(.5, .6, drivetrain),
-      new TurnDegrees(.5, 180, drivetrain)
+      new DriveDistance(1, .6, drivetrain),
+      new TurnDegrees(1, 180, drivetrain)
     );
   }
 }

@@ -69,8 +69,9 @@ public class RobotContainer {
     // Example of how to use the onboard IO
     Trigger userButton = new Trigger(m_onboardIO::getUserButtonPressed);
     userButton
-            .onTrue(new TurnWithGyroAndTimeout(3,90,10, m_drivetrain));
-         // .onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
+            .onTrue(new ServoArray(m_arm));
+            //.onTrue(new TurnWithGyroAndTimeout(3,90,10, m_drivetrain));
+          //.onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
         // .onTrue(new PrintCommand("USER Button Pressed"))
         // .onFalse(new PrintCommand("USER Button Released"));
 
@@ -94,7 +95,7 @@ public class RobotContainer {
     //     .onTrue(new InstantCommand(() -> m_drivetrain.DriveASquare(m_drivetrain), m_drivetrain));
 
     // Setup SmartDashboard options
-    //m_chooser.setDefaultOption("Auto Routine Square", new DriveASquare(m_drivetrain));
+    m_chooser.setDefaultOption("Auto Routine Square", new DriveASquare(m_drivetrain));
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
     SmartDashboard.putData(m_chooser);
   }
