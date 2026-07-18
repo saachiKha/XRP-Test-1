@@ -11,9 +11,11 @@ import frc.robot.commands.ArcadeDrive;
 import frc.robot.commands.AutonomousDistance;
 import frc.robot.commands.AutonomousTime;
 import frc.robot.commands.DefaultDrive;
+import frc.robot.commands.DriveASquare;
 import frc.robot.commands.GyroPath;
 import frc.robot.commands.ServoWithGyro;
 import frc.robot.commands.TurnWithGyroAndTimeout;
+import frc.robot.commands.DriveASquare;
 import frc.robot.subsystems.Arm; 
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -85,8 +87,12 @@ public class RobotContainer {
     joystickCButton
         .onTrue(new InstantCommand(() -> m_drivetrain.flipRightInversion(), m_drivetrain));
 
+    // JoystickButton joystickDButton = new JoystickButton(m_controller, 4);
+    // joystickDButton
+    //     .onTrue(new InstantCommand(() -> m_drivetrain.DriveASquare(m_drivetrain), m_drivetrain));
+
     // Setup SmartDashboard options
-    m_chooser.setDefaultOption("Gyro Path", new GyroPath(m_drivetrain));
+    //m_chooser.setDefaultOption("Auto Routine Square", new DriveASquare(m_drivetrain));
     m_chooser.addOption("Auto Routine Time", new AutonomousTime(m_drivetrain));
     SmartDashboard.putData(m_chooser);
   }
