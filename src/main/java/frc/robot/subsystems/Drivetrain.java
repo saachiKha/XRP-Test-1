@@ -8,6 +8,7 @@ import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.xrp.XRPGyro;
 import edu.wpi.first.wpilibj.xrp.XRPMotor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -154,6 +155,9 @@ public class Drivetrain extends SubsystemBase {
 
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Test Num, Gyro Direction", m_gyro.getAngleZ());
+    SmartDashboard.putBoolean("Test Bool", true);
+    SmartDashboard.putString("Test Str", "Hello");
     // This method will be called once per scheduler run
   }
 }
