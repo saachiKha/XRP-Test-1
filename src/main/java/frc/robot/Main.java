@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+// import edu.wpi.first.wpilibj.DigitalInput;
+// import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**
@@ -19,7 +21,11 @@ public final class Main {
    *
    * <p>If you change your main robot class, change the parameter type.
    */
-  public static void main(String... args) {
+  public static void main(String... args) { //practice debugging
+    //System.out.println("Testing");
+    // DigitalOutput output8 = new DigitalOutput(8);
+    // DigitalInput input9 = new DigitalInput(9);
+    // DigitalInput input10 = new DigitalInput(10);
     RobotBase.startRobot(Robot::new);
   }
 }

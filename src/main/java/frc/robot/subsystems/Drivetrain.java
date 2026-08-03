@@ -8,6 +8,7 @@ import edu.wpi.first.util.sendable.SendableRegistry;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.xrp.XRPGyro;
 import edu.wpi.first.wpilibj.xrp.XRPMotor;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -39,6 +40,9 @@ public class Drivetrain extends SubsystemBase {
   // Set up the BuiltInAccelerometer
   private final BuiltInAccelerometer m_accelerometer = new BuiltInAccelerometer();
 
+  // whether or not the right motor is inverted, controls whether the robot will turn or drive straight
+  private boolean rightInversion = true;
+
   /** Creates a new Drivetrain. */
   public Drivetrain() {
     SendableRegistry.addChild(m_diffDrive, m_leftMotor);
@@ -47,12 +51,18 @@ public class Drivetrain extends SubsystemBase {
     // We need to invert one side of the drivetrain so that positive voltages
     // result in both sides moving forward. Depending on how your robot's
     // gearbox is constructed, you might have to invert the left side instead.
-    m_rightMotor.setInverted(true);
+    m_rightMotor.setInverted(rightInversion);
 
     // Use inches as unit for encoder distances
     m_leftEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
     m_rightEncoder.setDistancePerPulse((Math.PI * kWheelDiameterInch) / kCountsPerRevolution);
     resetEncoders();
+    m_diffDrive.setSafetyEnabled(false);
+  }
+
+  public void flipRightInversion(){
+    rightInversion = !rightInversion;
+    m_rightMotor.setInverted(rightInversion);
   }
 
   public void arcadeDrive(double xaxisSpeed, double zaxisRotate) {
@@ -145,6 +155,10 @@ public class Drivetrain extends SubsystemBase {
 
   @Override
   public void periodic() {
+    SmartDashboard.putNumber("Gyro Direction", m_gyro.getAngleZ());
+    SmartDashboard.putNumber("What the gyro seems to depend on?", m_gyro.getRateZ());
+    SmartDashboard.putBoolean("Test Bool", true);
+    SmartDashboard.putString("Test Str", "Hello");
     // This method will be called once per scheduler run
   }
 }
