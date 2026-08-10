@@ -36,12 +36,12 @@ public class ServoWithGyro extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(drivetrain.getGyroAngleZ()>=10){
+    if(drivetrain.getGyroAngleZ()>=90){
       this.Servoarm.setAngle(45);
-    }else if(drivetrain.getGyroAngleZ()>=-10){
+    }else if(drivetrain.getGyroAngleZ()>=-90){
       this.Servoarm.setAngle(180);
     }else{
-      this.Servoarm.setAngle(90);
+      this.Servoarm.setAngle(0);
     }
   }
 
