@@ -16,6 +16,7 @@ import frc.robot.commands.GyroPath;
 import frc.robot.commands.ServoArray;
 import frc.robot.commands.ServoWithGyro;
 import frc.robot.commands.TurnWithGyroAndTimeout;
+import frc.robot.commands.WaveDemo;
 import frc.robot.commands.DriveASquare;
 import frc.robot.subsystems.Arm; 
 import frc.robot.subsystems.Drivetrain;
@@ -75,11 +76,9 @@ public class RobotContainer {
         // .onTrue(new PrintCommand("USER Button Pressed"))
         // .onFalse(new PrintCommand("USER Button Released"));
 
-    JoystickButton joystickAButton = new JoystickButton(m_controller, 1);
-    joystickAButton
-            .onTrue(new ServoArray(m_arm));
-        // .onTrue(new InstantCommand(() -> m_arm.setAngle(45.0), m_arm))
-        // .onFalse(new InstantCommand(() -> m_arm.setAngle(0.0), m_arm));
+    JoystickButton joystickAButton = new JoystickButton(m_controller, 1); 
+    joystickAButton //We are setting the first button on the controller to do our new command when clicked
+            .onTrue(new WaveDemo(m_drivetrain, m_arm));
 
     JoystickButton joystickBButton = new JoystickButton(m_controller, 2);
     joystickBButton
