@@ -71,27 +71,23 @@ public class RobotContainer {
     Trigger userButton = new Trigger(m_onboardIO::getUserButtonPressed);
     userButton
             .onTrue(new ServoArray(m_arm));
-            //.onTrue(new TurnWithGyroAndTimeout(3,90,10, m_drivetrain));
           //.onTrue(new ServoWithGyro(m_drivetrain,m_arm)); //For this to work, you have to press the USER button on the board, not instructed in the tutorial
         // .onTrue(new PrintCommand("USER Button Pressed"))
         // .onFalse(new PrintCommand("USER Button Released"));
 
     JoystickButton joystickAButton = new JoystickButton(m_controller, 1); 
-    joystickAButton //We are setting the first button on the controller to do our new command when clicked
-            .onTrue(new WaveDemo(m_drivetrain, m_arm));
-
+    joystickAButton 
+              .onTrue(new TurnWithGyroAndTimeout(1,90,10, m_drivetrain));
+            
     JoystickButton joystickBButton = new JoystickButton(m_controller, 2);
     joystickBButton
-        .onTrue(new InstantCommand(() -> m_arm.setAngle(90.0), m_arm))
-        .onFalse(new InstantCommand(() -> m_arm.setAngle(0.0), m_arm));
+            .onTrue(new WaveDemo(m_drivetrain, m_arm));//We are setting the first button on the controller to do our new command when clicked
+        // .onTrue(new InstantCommand(() -> m_arm.setAngle(90.0), m_arm))
+        // .onFalse(new InstantCommand(() -> m_arm.setAngle(0.0), m_arm));
 
     JoystickButton joystickCButton = new JoystickButton(m_controller, 3);
     joystickCButton
         .onTrue(new InstantCommand(() -> m_drivetrain.flipRightInversion(), m_drivetrain));
-
-    // JoystickButton joystickDButton = new JoystickButton(m_controller, 4);
-    // joystickDButton
-    //     .onTrue(new InstantCommand(() -> m_drivetrain.DriveASquare(m_drivetrain), m_drivetrain));
 
     // Setup SmartDashboard options
     m_chooser.setDefaultOption("Auto Routine Square", new DriveASquare(m_drivetrain));

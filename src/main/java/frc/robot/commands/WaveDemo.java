@@ -31,10 +31,10 @@ public class WaveDemo extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() { //here is where we can write the logic
-    if ((drivetrain.getGyroAngleZ() >= 10) || (drivetrain.getGyroAngleZ() <= 20)){
-      this.Servoarm.setAngle(135);
+    if ((drivetrain.getGyroAngleZ() >= 10)){ 
+      this.Servoarm.setAngle(180);
     } else {
-      this.Servoarm.setAngle(45);
+      this.Servoarm.setAngle(0);
     }
   }
 
